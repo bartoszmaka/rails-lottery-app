@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :current_user_admin?, except: [:show, :index]
-  expose(:items) { Item.all }
+  expose(:items) { Item.all.page(params[:page]) }
   expose(:item, build_params: :item_params)
 
   def create
