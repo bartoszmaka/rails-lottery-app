@@ -4,10 +4,9 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def current_user_admin?
-    unless current_user.roles.pluck(:name).include?('admin')
-      flash[:danger] = 'you are not admin'
-      redirect_to root_path
-    end
+  def ensure_current_user_admin?
+    return if current_user.roles.pluck(:name).include?('admin')
+    flash[:danger] = 'you are not admin'
+    redirect_to root_path
   end
 end

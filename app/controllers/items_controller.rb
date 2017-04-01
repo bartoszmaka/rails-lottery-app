@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :current_user_admin?, except: [:show, :index]
+  before_action :ensure_current_user_admin?, except: [:show, :index]
   expose(:items) { Item.all.page(params[:page]) }
   expose(:item, build_params: :item_params)
 
@@ -24,8 +24,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item.destroy
-    redirect_to items_path
+    if item.users.empty?
+      item.destroy
+      redirect_to items_path
+    else
+      params[:danger] = "can't destroy bidded item!"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private
