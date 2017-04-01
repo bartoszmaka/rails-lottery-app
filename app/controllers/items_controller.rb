@@ -12,11 +12,13 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.Create(item_params)
-    if @item.save?
+    @item = Item.create(item_params)
+    if @item.save
       params[:success] = 'Item successfully added'
+      redirect_to @item
     else
       params[:danger] = 'Failed to add item'
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -26,6 +28,18 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.update(params[:id], item_params)
+    if @item.save
+      params[:success] = 'Item successfully added'
+      redirect_to @item
+    else
+      params[:danger] = 'Failed to add item'
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def destroy
+    Item.destroy(params[:id])
+    redirect_to items_path
   end
 
   private

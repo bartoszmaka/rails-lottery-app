@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lottery</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class='col-md-9 col-xs-12'>
+      <%= render 'layouts/navigation' %>
+      <%= render 'layouts/flash_messages' %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

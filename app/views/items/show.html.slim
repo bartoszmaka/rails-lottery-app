@@ -3,4 +3,5 @@ h2
   small name:
   =< @item.name
 
-= link_to 'Edit', edit_item_path(@item)
+= link_to 'Edit', edit_item_path(@item), class: 'btn btn-primary'
+= link_to 'Destroy', item_path(@item), class: 'btn btn-danger', method: :delete
