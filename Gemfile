@@ -5,25 +5,27 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
+gem 'ffaker'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'pg', '~> 0.18'
+gem 'pry'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.2'
-gem 'sass-rails', '~> 5.0'
 gem 'sass-rails', '~> 5.0'
 gem 'slim'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'pry'
 
 group :development, :test do
   gem 'byebug', platform: :mri
 end
 
 group :development do
+  gem 'binding_of_caller'
   gem 'better_errors'
   gem 'listen', '~> 3.0.5'
   gem 'spring'

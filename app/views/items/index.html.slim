@@ -1,5 +1,7 @@
 h2 items#index
+= link_to 'Add item', new_item_path
 
 - @items.each do |item|
-  h4 item.name
+  = link_to item_path(item) do
+    h4 = item.name
 
