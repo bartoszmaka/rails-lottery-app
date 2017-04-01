@@ -1,7 +1,7 @@
 h4 item#show
 h2
   small name:
-  =< @item.name
+  =< item.name
 
-= link_to 'Edit', edit_item_path(@item), class: 'btn btn-primary'
-= link_to 'Destroy', item_path(@item), class: 'btn btn-danger', method: :delete
+= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary'
+= link_to 'Destroy', item_path(item), class: 'btn btn-danger', method: :delete

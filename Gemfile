@@ -7,10 +7,12 @@ end
 
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
+gem 'decent_exposure', '3.0.0'
 gem 'devise'
 gem 'ffaker'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'pg', '~> 0.18'
 gem 'pry'
 gem 'puma', '~> 3.0'
@@ -29,6 +31,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'letter_opener_web'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

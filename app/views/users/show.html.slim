@@ -1,9 +1,9 @@
 h4 user#show :id
 h2
   small email:
-  = @user.email
+  = user.email
 
 h4: small roles:
 ul
-  - @user.roles.each do |role|
+  - user.roles.each do |role|
     li: p = role.name

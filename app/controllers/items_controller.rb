@@ -1,39 +1,22 @@
 class ItemsController < ApplicationController
-  def index
-    @items = Item.all
-    # items where bidders = 0
-    # 6 items per page
-  end
-
-  def show
-    @item = Item.find(params[:id])
-    # bidders
-  end
-
-  def new
-    @item = Item.new
-  end
+  before_action :current_user_admin?, except: [:show, :index]
+  expose(:items) { Item.all }
+  expose(:item, build_params: :item_params)
 
   def create
-    @item = Item.create(item_params)
-    if @item.save
+    if item.save
       params[:success] = 'Item successfully added'
-      redirect_to @item
+      redirect_to item
     else
       params[:danger] = 'Failed to add item'
       redirect_back(fallback_location: root_path)
     end
   end
 
-  def edit
-    @item = Item.find(params[:id])
-  end
-
   def update
-    @item = Item.update(params[:id], item_params)
-    if @item.save
+    if item.save
       params[:success] = 'Item successfully added'
-      redirect_to @item
+      redirect_to item
     else
       params[:danger] = 'Failed to add item'
       redirect_back(fallback_location: root_path)
@@ -41,7 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    Item.destroy(params[:id])
+    item.destroy
     redirect_to items_path
   end
 
