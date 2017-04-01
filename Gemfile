@@ -1,12 +1,13 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
+gem 'devise'
 gem 'ffaker'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
@@ -25,8 +26,8 @@ group :development, :test do
 end
 
 group :development do
-  gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'listen', '~> 3.0.5'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

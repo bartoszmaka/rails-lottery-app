@@ -1,10 +1,13 @@
 class ItemsController < ApplicationController
   def index
     @items = Item.all
+    # items where bidders = 0
+    # 6 items per page
   end
 
   def show
     @item = Item.find(params[:id])
+    # bidders
   end
 
   def new
