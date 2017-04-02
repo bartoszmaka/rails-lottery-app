@@ -6,4 +6,11 @@ h2
 h4: small roles:
 ul
   - user.roles.each do |role|
-    li: p = role.name
+    li = role.name
+
+- if user.won_items.any?
+  h4: small won items:
+  ul
+    - user.won_items.each do |item|
+      li = link_to item.name, item_path(item)
+

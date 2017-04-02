@@ -2,8 +2,26 @@ h2 items#index
 = link_to 'Add item', new_item_path, class: 'btn btn-primary'
 
 - items.each do |item|
-  = link_to item_path(item) do
-    h4 = item.name
+  .row
+    .col-sm-12
+      .well
+        .row
+          .col-sm-2
+            = image_tag('default', size: '64x64')
+          .col-sm-6
+            = link_to item_path(item) do
+              h4 = item.name
+          .col-sm-4
+            .pull-right
+              .row
+                | won
+                = render 'shared/statusicon', result: item.won?
+              / .row
+              /   | bidable
+              /   = render 'shared/statusicon', result: item.bidable?
+              .row
+                | drawable
+                = render 'shared/statusicon', result: item.drawable?
 
 = paginate items
 
