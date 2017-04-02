@@ -1,16 +1,31 @@
 h4 user#show
-h2
-  small email:
-  = user.email
+.row
+  .col-md-8: .well
+    h2
+      small email:
+      = user.email
+  .col-md-4: .well
+    h4: small roles:
+    ul
+      - user.roles.each do |role|
+        li = role.name
 
-h4: small roles:
-ul
-  - user.roles.each do |role|
-    li = role.name
-
-- if user.won_items.any?
-  h4: small won items:
-  ul
-    - user.won_items.each do |item|
-      li = link_to item.name, item_path(item)
-
+.row
+  .col-md-4: .well
+    h4: small won items:
+    - if user.won_items.any?
+      ul
+        - user.won_items.each do |item|
+          li = link_to item.name, item_path(item)
+  .col-md-4: .well
+    h4: small waiting for succesful draw:
+    - if user.active_bids.any?
+      ul
+        - user.active_bids.each do |item|
+          li = link_to item.name, item_path(item)
+  .col-md-4: .well
+    h4: small maybe next time:
+    - if user.lost_draws.any?
+      ul
+        - user.lost_draws.each do |item|
+          li = link_to item.name, item_path(item)

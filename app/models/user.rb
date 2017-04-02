@@ -9,6 +9,14 @@ class User < ApplicationRecord
 
   after_create :assign_default_role
 
+  def active_bids
+    items.where(winner: nil)
+  end
+
+  def lost_draws
+    Item.drawn.where.not(winner: self) & items
+  end
+
   def admin?
     has_role? :admin
   end
