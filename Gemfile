@@ -5,10 +5,13 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'active_interaction', '~> 3.5'
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
 gem 'decent_exposure', '3.0.0'
 gem 'devise'
+gem 'factory_girl'
+gem 'factory_girl_rails'
 gem 'ffaker'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
@@ -24,8 +27,6 @@ gem 'slim'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
-gem 'factory_girl'
-gem 'factory_girl_rails'
 
 group :test do
   gem 'database_cleaner'
@@ -34,8 +35,8 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rspec-rails'
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
 end
 
 group :development do
