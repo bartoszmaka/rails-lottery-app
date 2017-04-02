@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'pg', '~> 0.18'
 gem 'pry'
+gem 'pry-rails'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.0.2'
 gem 'rolify'
@@ -23,8 +24,17 @@ gem 'slim'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'factory_girl'
+gem 'factory_girl_rails'
+
+group :test do
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
+  gem 'simplecov', require: false
+end
 
 group :development, :test do
+  gem 'rspec-rails'
   gem 'byebug', platform: :mri
 end
 
