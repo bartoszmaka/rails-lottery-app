@@ -15,7 +15,7 @@ class Bid < ActiveInteraction::Base
   end
 
   def item_bidable?
-    return true unless item.won? || item.already_bid?(user)
+    return true if item.bidable?(user)
     errors.add(:already_won, "You can't bid already won item") if item.won?
     errors.add(:already_bid, "You can't bid the same item twice!") if item.already_bid?(user)
     false

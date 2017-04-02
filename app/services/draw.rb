@@ -14,7 +14,7 @@ class Draw < ActiveInteraction::Base
   end
 
   def item_drawable?
-    return true unless item.won? || item.users.count < 2
+    return true if item.drawable?
     errors.add(:already_won, "You can't run draw on already won item") if item.won?
     errors.add(:not_enough_bidders, "You can't run draw, if there is less than 2 bidders") if item.users.count < 2
     false

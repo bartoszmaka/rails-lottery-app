@@ -1,24 +1,31 @@
 h4 item#show
-h2
-  small name:
-  =< item.name
+.row
+  .col-md-10
+    h2
+      small name:
+      =< item.name
 
-- unless item.winner.nil?
-  h2
-    small winner:
-    =< link_to item.winner.email, user_path(item.winner)
-
-- if current_user.admin? && item.drawable?
-  = link_to 'Run Draw!', draw_item_path, class: 'btn btn-warning', method: :post
-- unless item.won?
-  = link_to 'Bid!', bid_item_path, class: 'btn btn-success', method: :post
-= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary'
-= link_to 'Destroy', item_path(item), class: 'btn btn-danger', method: :delete
+    - unless item.winner.nil?
+      h2
+        small winner:
+        =< link_to item.winner.email, user_path(item.winner)
+  .col-md-2
+    = render'shared/lottery_status', item: item
+.row
+  .col-md-12
+    - if current_user.admin? && item.drawable?
+      = link_to 'Run Draw!', draw_item_path, class: 'btn btn-warning', method: :post
+    - unless item.won?
+      = link_to 'Bid!', bid_item_path, class: 'btn btn-success', method: :post
+    = link_to 'Edit', edit_item_path(item), class: 'btn btn-primary'
+    = link_to 'Destroy', item_path(item), class: 'btn btn-danger', method: :delete
 
 - if item.users.any?
-  h3: small bidders:
-  ul
-  - item.users.each do |user|
-    li = link_to user_path(user) do
-      = user.email
+  .row
+    .col-md-12
+      h3: small bidders:
+      ul
+      - item.users.each do |user|
+        li = link_to user_path(user) do
+          = user.email
 

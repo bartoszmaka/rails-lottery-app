@@ -1,0 +1,9 @@
+.row
+  | won
+  = render 'shared/statusicon', result: item.won?
+.row
+  | bidable
+  = render 'shared/statusicon', result: item.bidable?(current_user)
+.row
+  | drawable
+  = render 'shared/statusicon', result: item.drawable?

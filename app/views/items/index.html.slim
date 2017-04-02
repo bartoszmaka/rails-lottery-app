@@ -13,15 +13,7 @@ h2 items#index
               h4 = item.name
           .col-sm-4
             .pull-right
-              .row
-                | won
-                = render 'shared/statusicon', result: item.won?
-              / .row
-              /   | bidable
-              /   = render 'shared/statusicon', result: item.bidable?
-              .row
-                | drawable
-                = render 'shared/statusicon', result: item.drawable?
+              = render 'shared/lottery_status', item: item
 
 = paginate items
 

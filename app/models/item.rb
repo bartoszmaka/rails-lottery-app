@@ -9,15 +9,22 @@ class Item < ApplicationRecord
   scope :drawable, -> { bidable.where('users_count > 1') }
 
   def won?
-    true if winner
+    return true if winner
+    false
   end
 
   def already_bid?(user)
-    true if users.include?(user)
+    return true if users.include?(user)
+    false
+  end
+
+  def bidable?(user)
+    return true unless won? || already_bid?(user)
+    false
   end
 
   def drawable?
-    return true if !won? && users.count > 1
+    return true unless won? || users.count < 2
     false
   end
 end
