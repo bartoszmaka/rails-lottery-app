@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   after_create :assign_default_role
 
+  def admin?
+    has_role? :admin
+  end
+
   def ban
     add_role(:banned)
   end

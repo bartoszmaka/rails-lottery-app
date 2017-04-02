@@ -3,10 +3,20 @@ h2
   small name:
   =< item.name
 
+- unless item.winner.nil?
+  h2
+    small winner:
+    =< link_to item.winner.email, user_path(item.winner)
+
+- if current_user.admin? && item.drawable?
+  = link_to 'Run Draw!', draw_item_path, class: 'btn btn-warning', method: :post
+- if item.biddable?
+  = link_to 'Bid!', bid_item_path, class: 'btn btn-success', method: :post
 = link_to 'Edit', edit_item_path(item), class: 'btn btn-primary'
 = link_to 'Destroy', item_path(item), class: 'btn btn-danger', method: :delete
 
 - if item.users.any?
+  h3: small bidders:
   ul
   - item.users.each do |user|
     li = link_to user_path(user) do
