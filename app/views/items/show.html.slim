@@ -13,12 +13,10 @@ h4 item#show
     = render'shared/lottery_status', item: item
 .row
   .col-md-12
-    - if current_user.admin? && item.drawable?
-      = link_to 'Run Draw!', draw_item_path, class: 'btn btn-warning', method: :post
-    - unless item.won?
-      = link_to 'Bid!', bid_item_path, class: 'btn btn-success', method: :post
-    = link_to 'Edit', edit_item_path(item), class: 'btn btn-primary'
-    = link_to 'Destroy', item_path(item), class: 'btn btn-danger', method: :delete
+    = item.link_to_draw
+    = item.link_to_bid
+    = item.link_to_edit
+    = item.link_to_destroy
 
 - if item.users.any?
   .row
