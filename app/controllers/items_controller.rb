@@ -3,13 +3,16 @@ class ItemsController < ApplicationController
   expose_decorated(:items) { Item.all.page(params[:page]) }
   expose_decorated(:item, build_params: :item_params)
 
+  def show
+  end
+
   def create
     if item.save
       flash[:success] = 'Item successfully added'
       redirect_to item
     else
       flash[:danger] = 'Failed to add item'
-      redirect_back(fallback_location: root_path)
+      render 'new'
     end
   end
 
@@ -29,7 +32,7 @@ class ItemsController < ApplicationController
       redirect_to item
     else
       flash[:danger] = 'Failed to update item'
-      redirect_back(fallback_location: root_path)
+      render 'edit'
     end
   end
 

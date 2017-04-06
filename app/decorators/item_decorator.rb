@@ -1,6 +1,6 @@
 class ItemDecorator < Draper::Decorator
   delegate_all
-  # decorates_association :users
+  decorates_association :users
 
   def avatar
     h.image_tag('default', size: '64x64')

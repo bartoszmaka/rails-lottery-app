@@ -25,5 +25,5 @@ h4 item#show
       ul
       - item.users.each do |user|
         li = link_to user_path(user) do
-          = user.email
+          = user.name_and_domain
 
