@@ -1,9 +1,10 @@
-.row
+.row style='padding-top: 70px;'
   .col-md-12
     .navbar.navbar-default.navbar-fixed-top.navbar-inverse
       .container-fluid
         ul.nav.navbar-nav
           li = link_to 'Home', root_path
+          li: p.navbar-text = yield(:header)
         ul.nav.navbar-nav.navbar-right
           - if user_signed_in?
             li = link_to 'Edit profile', edit_user_registration_path
