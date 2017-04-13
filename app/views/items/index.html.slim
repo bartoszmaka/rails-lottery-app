@@ -3,6 +3,11 @@
 = link_to 'Add item', new_item_path, class: 'btn btn-primary'
 = link_to 'All users', users_path, class: 'btn btn-success'
 
+= search_form_for q do |f|
+  = f.label :name_cont
+  = f.search_field :name_cont
+  = f.submit
+
 - items.each do |item|
   .row: .col-sm-12: .well: .row
     .col-sm-2

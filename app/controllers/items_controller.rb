@@ -1,10 +1,8 @@
 class ItemsController < ApplicationController
   before_action :ensure_current_user_admin?, except: [:show, :index, :bid]
-  expose_decorated(:items) { Item.all.page(params[:page]) }
+  expose(:q) { Item.ransack(params[:q]) }
+  expose_decorated(:items) { q.result.page(params[:page]) }
   expose_decorated(:item, build_params: :item_params)
-
-  def show
-  end
 
   def create
     if item.save
