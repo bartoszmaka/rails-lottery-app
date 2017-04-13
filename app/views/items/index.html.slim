@@ -1,6 +1,7 @@
 - provide :header, 'Items'
 = items.available_items
 = link_to 'Add item', new_item_path, class: 'btn btn-primary'
+= link_to 'All users', users_path, class: 'btn btn-success'
 
 - items.each do |item|
   .row: .col-sm-12: .well: .row

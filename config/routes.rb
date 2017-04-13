@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     post :bid, on: :member
     post :draw, on: :member
   end
-  resources :users, only: [:show]
+  resources :users, only: [:show, :index]
   if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+    mount LetterOpenerWeb::Engine, at: '/letter_opener'
   end
 end

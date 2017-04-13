@@ -1,0 +1,13 @@
+- provide :header, 'Users'
+table.table
+ tr
+  th = sort_link(@q, :email, 'Email')
+  th = sort_link(@q, :items, 'bid items')
+  th = sort_link(@q, :won_items, 'won items')
+  th = sort_link(@q, :lost_draws, 'lost items')
+  - @users.each do |user|
+    tr
+      td = link_to user.email, user_path(user)
+      td = user.items.count
+      td = user.won_items.count
+      td = user.lost_draws.count
