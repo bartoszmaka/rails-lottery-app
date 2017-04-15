@@ -59,6 +59,7 @@ class ItemsController < ApplicationController
     outcome = Draw.run(item: item)
     if outcome.valid?
       flash[:success] = outcome.result
+      DrawMailer.draw_won(item).deliver_now
     else
       flash[:danger] = outcome.errors.messages.values.flatten.join(' and ')
     end
